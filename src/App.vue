@@ -11,16 +11,52 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody> 
         <tr v-for="row in rows" v-bind:key="row.title">
           <td>{{ row.title }}</td>
           <td>{{ row.price }}</td>
           <td>{{ row.quantity }}</td>
           <td>
             <button @click="deleteEvent(row.title)" id="delete">X</button>
-            <button id="edit">Edit</button>
+            <button @click="edit(row.title)" id="edit">Edit</button>
           </td>
           <td>{{ row.price * row.quantity }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Összérték:</td>
+          <td>{{ row.price * row}}</td>
+
+          
+        </tr>
+        <tr v-if="valami">
+          <td>
+            <input
+              type="text"
+              name="edit_title"
+              id="edit_title"
+              placeholder="Edit Title"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="edit_price"
+              id="edit_price"
+              placeholder="Edit Price"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="edit_quantity"
+              id="edit_quantity"
+              placeholder="Edit Quantity"
+            />
+          </td>
+          <td><button @click="save()" id="save">Save</button></td>
         </tr>
 
         <tr>
@@ -62,24 +98,36 @@
 export default {
   name: "App",
   components: {},
+
   methods: {
     deleteEvent(title) {
       this.rows = this.rows.filter((e) => e.title !== title);
     },
-    addRow(){
-      this.rows.push({title: this.newrow.title, price: this.newrow.price, quantity: this.newrow.quantity});
+    addRow() {
+      this.rows.push({
+        title: this.newrow.title,
+        price: this.newrow.price,
+        quantity: this.newrow.quantity,
+      });
     },
-    edit() {},
+
+    edit() {
+      this.valami = true;
+    },
+    save() {
+      this.rows.edit = this.rows({title: this.rows.title, price: this.rows.price, quantity: this.rows.quantity,});
+
+    },
   },
   data() {
     return {
-      newrow:
-         {
-          title: "",
-          price: null,
-          quantity: null,
-        },
-        
+      valami: false,
+      newrow: {
+        title: "",
+        price: null,
+        quantity: null,
+      },
+
       rows: [
         {
           title: "Kerék",
