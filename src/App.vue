@@ -22,15 +22,15 @@
           </td>
           <td>{{ row.price * row.quantity }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td></td>
           <td></td>
           <td></td>
           <td>Összérték:</td>
-          <td>{{ row.price * row}}</td>
+          <td>{{ row.price * row}}</td> -->
 
           
-        </tr>
+        
         <tr v-if="valami">
           <td>
             <input
