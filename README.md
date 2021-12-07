@@ -1,4 +1,4 @@
-# [Név]
+# [Nagy Gábor]
 
 ## Hogyan kezdj neki?
 
