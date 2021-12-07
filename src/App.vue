@@ -9,31 +9,47 @@
           <th>Operations</th>
           <th>Összérték</th>
         </tr>
-      </thead> 
-      
-      <tbody>
-        <tr v-for="row in rows"
-          v-bind:key="row.title">
+      </thead>
 
+      <tbody>
+        <tr v-for="row in rows" v-bind:key="row.title">
           <td>{{ row.title }}</td>
           <td>{{ row.price }}</td>
           <td>{{ row.quantity }}</td>
           <td>
-            <button>X</button>
-            <button>Edit</button>
+            <button @click="deleteEvent(row.title)" id="delete">X</button>
+            <button id="edit">Edit</button>
           </td>
-          <td>{{ row.price * row.quantity }} </td>
+          <td>{{ row.price * row.quantity }}</td>
         </tr>
 
         <tr>
-          <td><input type="text" name="input_title" id="input_title" placeholder="Title"></td>
-          <td><input type="number" name="input_price" id="input_price" placeholder="Price"></td>
-          <td><input type="number" name="input_quantity" id="input_quantity" placeholder="Quantity"></td>
+          <td>
+            <input
+              type="text"
+              name="input_title"
+              id="input_title"
+              placeholder="Title"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="input_price"
+              id="input_price"
+              placeholder="Price"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="input_quantity"
+              id="input_quantity"
+              placeholder="Quantity"
+            />
+          </td>
           <button name="input_add" id="input_add">Add</button>
         </tr>
-
-
-
       </tbody>
     </table>
   </div>
@@ -41,36 +57,41 @@
 
 <script>
 export default {
-  name: 'App',
-  components: {
+  name: "App",
+  components: {},
+  methods: {
+    deleteEvent(title) {
+      this.rows = this.rows.filter((e) => e.title !== title);
+    },
+    edit() {},
   },
   data() {
     return {
       rows: [
         {
-          title: 'Kerék',
+          title: "Kerék",
           price: 100,
-          quantity: 12
+          quantity: 12,
         },
         {
-          title: 'Teleszkóp',
+          title: "Teleszkóp",
           price: 1000,
-          quantity: 300
+          quantity: 300,
         },
         {
-          title: 'Kormány',
+          title: "Kormány",
           price: 230,
-          quantity: 5
+          quantity: 5,
         },
         {
-          title: 'Ajtó',
+          title: "Ajtó",
           price: 45120,
-          quantity: 321
+          quantity: 321,
         },
-      ]
-    }
-  }
-}
+      ],
+    };
+  },
+};
 </script>
 
 <style>
