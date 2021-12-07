@@ -76,8 +76,8 @@ export default {
       newrow:
          {
           title: "",
-          price: 0,
-          quantity: 0,
+          price: null,
+          quantity: null,
         },
         
       rows: [
