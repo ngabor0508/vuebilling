@@ -115,7 +115,7 @@ export default {
       this.valami = true;
     },
     save() {
-      this.rows.edit = this.rows({title: this.rows.title, price: this.rows.price, quantity: this.rows.quantity,});
+
 
     },
   },
